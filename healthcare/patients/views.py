@@ -18,7 +18,7 @@ class PatientSerializer(serializers.ModelSerializer):
         read_only_fields = ['created_at', 'updated_at']
     
     def create(self, validated_data):
-        # Associate the patient with the authenticated user
+        #associate the patient with the authenticated user
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
     
@@ -26,8 +26,8 @@ class PatientSerializer(serializers.ModelSerializer):
 class PatientViewSet(viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
-    permission_classes = [IsAuthenticated]  # Only authenticated users can access
+    permission_classes = [IsAuthenticated]  #access by only authenticated users
 
     def perform_create(self, serializer):
-        # Automatically associate the patient with the authenticated user
+        #Automatically associate the patient with the authenticated user
         serializer.save(user=self.request.user)

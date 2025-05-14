@@ -11,7 +11,7 @@ class PatientDoctorMappingSerializer(serializers.ModelSerializer):
         read_only_fields = ['created_at']
 
     def validate(self, attrs):
-        # Check if the patient belongs to the current user
+        #check if the patient belongs to the current user
         patient = attrs.get('patient')
         request = self.context.get('request')
         

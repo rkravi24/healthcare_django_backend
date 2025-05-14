@@ -2,20 +2,20 @@ from pathlib import Path
 from datetime import timedelta
 from decouple import config, Csv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+#build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
+#keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+#don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 AUTH_USER_MODEL = 'accounts.User'
 
 ALLOWED_HOSTS = ['*']
 
-# Application definition
+#application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -23,8 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Third-party apps
+
+    #third-party required
     'rest_framework',
     'rest_framework_simplejwt',
     
@@ -65,7 +65,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'healthcare.wsgi.application'
 
-# Database
+#database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -77,7 +77,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+#password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -93,7 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# REST Framework settings
+#REST Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -103,7 +103,7 @@ REST_FRAMEWORK = {
     ],
 }
 
-# JWT settings
+#JWT settings
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
@@ -132,14 +132,14 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-# Internationalization
+#internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+#static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 
-# Default primary key field type
+#default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

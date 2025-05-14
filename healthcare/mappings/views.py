@@ -28,7 +28,7 @@ class PatientDoctorMappingViewSet(viewsets.ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
-        # Only allow updates for mappings of patients belonging to the authenticated user
+        #only allow updates for mappings of patients belonging to the authenticated user
         if instance.patient.user != request.user:
             return Response(
                 {"detail": "You do not have permission to update this mapping."},
@@ -43,7 +43,7 @@ class PatientDoctorMappingViewSet(viewsets.ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
-        # Only allow deletion for mappings of patients belonging to the authenticated user
+        #only allow deletion for mappings of patients belonging to the authenticated user
         if instance.patient.user != request.user:
             return Response(
                 {"detail": "You do not have permission to delete this mapping."},
@@ -59,7 +59,7 @@ class PatientDoctorMappingViewSet(viewsets.ModelViewSet):
         Get all doctors assigned to a specific patient
         """
         try:
-            # Verify the patient belongs to the current user
+            #verify the patient belongs to the current user
             patient = Patient.objects.get(id=patient_id, user=request.user)
         except Patient.DoesNotExist:
             return Response(
